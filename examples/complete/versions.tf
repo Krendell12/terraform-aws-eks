@@ -6,8 +6,8 @@ terraform {
       source  = "hashicorp/aws"
       version = ">= 3.72"
     }
-    tls = {
-      source  = "hashicorp/tls"
+    null = {
+      source  = "hashicorp/null"
       version = ">= 3.0"
     }
   }
