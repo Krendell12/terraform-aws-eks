@@ -60,7 +60,10 @@ resource "aws_eks_cluster" "this" {
 }
 
 resource "aws_ec2_tag" "cluster_primary_security_group" {
-  for_each = { for k, v in merge(var.tags, var.cluster_tags) : k => v if local.create }
+  # This should not affect the name of the cluster primary security group
+  # Ref: https://github.com/terraform-aws-modules/terraform-aws-eks/pull/2006
+  # Ref: https://github.com/terraform-aws-modules/terraform-aws-eks/pull/2008
+  for_each = { for k, v in merge(var.tags, var.cluster_tags) : k => v if local.create && k != "Name" && var.create_cluster_primary_security_group_tags }
 
   resource_id = aws_eks_cluster.this[0].vpc_config[0].cluster_security_group_id
   key         = each.key
@@ -171,7 +174,7 @@ data "tls_certificate" "this" {
 resource "aws_iam_openid_connect_provider" "oidc_provider" {
   count = local.create && var.enable_irsa ? 1 : 0
 
-  client_id_list  = distinct(compact(concat(["sts.${data.aws_partition.current.dns_suffix}"], var.openid_connect_audiences)))
+  client_id_list  = distinct(compact(concat(["sts.${local.dns_suffix}"], var.openid_connect_audiences)))
   thumbprint_list = concat([data.tls_certificate.this[0].certificates[0].sha1_fingerprint], var.custom_oidc_thumbprints)
   url             = aws_eks_cluster.this[0].identity[0].oidc[0].issuer
 

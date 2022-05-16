@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+## [18.21.0](https://github.com/terraform-aws-modules/terraform-aws-eks/compare/v18.20.5...v18.21.0) (2022-05-12)
+
+
+### Features
+
+* Add `create_autoscaling_group` option and extra outputs ([#2067](https://github.com/terraform-aws-modules/terraform-aws-eks/issues/2067)) ([58420b9](https://github.com/terraform-aws-modules/terraform-aws-eks/commit/58420b92a0838aa2e17b156b174893b349083a2b))
+
+### [18.20.5](https://github.com/terraform-aws-modules/terraform-aws-eks/compare/v18.20.4...v18.20.5) (2022-04-21)
+
+
+### Bug Fixes
+
+* Add conditional variable to allow users to opt out of tagging cluster primary security group ([#2034](https://github.com/terraform-aws-modules/terraform-aws-eks/issues/2034)) ([51e4182](https://github.com/terraform-aws-modules/terraform-aws-eks/commit/51e418216f210647b69bbd06e569a061c2f0e3c1))
+
+### [18.20.4](https://github.com/terraform-aws-modules/terraform-aws-eks/compare/v18.20.3...v18.20.4) (2022-04-20)
+
+
+### Bug Fixes
+
+* Correct DNS suffix for OIDC provider ([#2026](https://github.com/terraform-aws-modules/terraform-aws-eks/issues/2026)) ([5da692d](https://github.com/terraform-aws-modules/terraform-aws-eks/commit/5da692df67cae313711e94216949d1105da6a87f))
+
+### [18.20.3](https://github.com/terraform-aws-modules/terraform-aws-eks/compare/v18.20.2...v18.20.3) (2022-04-20)
+
+
+### Bug Fixes
+
+* Add `compact()` to `aws_auth_configmap_yaml` for when node groups are set to `create = false` ([#2029](https://github.com/terraform-aws-modules/terraform-aws-eks/issues/2029)) ([c173ba2](https://github.com/terraform-aws-modules/terraform-aws-eks/commit/c173ba2d62d228729fe6c68f713af6dbe15e7233))
+
+### [18.20.2](https://github.com/terraform-aws-modules/terraform-aws-eks/compare/v18.20.1...v18.20.2) (2022-04-12)
+
+
+### Bug Fixes
+
+* Avoid re-naming the primary security group through a `Name` tag and leave to the EKS service to manage ([#2010](https://github.com/terraform-aws-modules/terraform-aws-eks/issues/2010)) ([b5ae5da](https://github.com/terraform-aws-modules/terraform-aws-eks/commit/b5ae5daa39f8380dc21c9ef1daff22242930692e))
+
 ### [18.20.1](https://github.com/terraform-aws-modules/terraform-aws-eks/compare/v18.20.0...v18.20.1) (2022-04-09)
 
 
